@@ -55,28 +55,56 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3); /* 3D-эффект */
             position: relative;
             overflow: hidden;
-            animation: pulseScale 2s infinite, gradientRun 3s linear infinite; /* Пульсация + бегущий градиент */
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulseScale 2s infinite, gradientRun 3s linear infinite; /* Пульсация + градиент */
+        }
+        .btn::before {
+            content: '🎰'; /* Вращающаяся иконка */
+            font-size: 1.5em;
+            margin-right: 10px;
+            animation: spin 1s linear infinite;
+        }
+        .btn::after {
+            content: attr(data-info); /* Дополнительная инфа при наведении */
+            display: none;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8em;
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
         }
         .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(255,255,255,0.7);
+            transform: scale(1.1) translateY(-2px); /* 3D-подъём при наведении */
+            box-shadow: 0 8px 20px rgba(255,255,255,0.7), inset 0 4px 10px rgba(255,255,255,0.5); /* Усиленный блик */
+        }
+        .btn:hover::after {
+            display: block;
+        }
+        .btn.urgency {
+            animation: pulse 1.5s infinite;
+        }
+        .btn.red {
+            background: linear-gradient(90deg, #ff4b2b, #ff416c);
+        }
+        .btn.blue {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
         }
         .telegram-btn {
             background: linear-gradient(90deg, #0084ff, #6633ff);
         }
-        footer {
-            margin-top: 40px;
-            font-size: 12px;
-            color: #888;
-        }
         .marquee {
             width: 100%;
             overflow: hidden;
-            background: #ffd700; /* Жёлтый фон */
+            background: #ffd700;
             color: #000;
             padding: 10px 0;
             margin-top: 20px;
@@ -85,8 +113,8 @@
         }
         .marquee-content {
             display: inline-block;
-            animation: marquee 10s linear infinite; /* Бегущая строка */
-            padding-left: 100%; /* Начало вне экрана */
+            animation: marquee 10s linear infinite;
+            padding-left: 100%;
         }
         @keyframes marquee {
             0% { transform: translateX(0); }
@@ -103,6 +131,10 @@
         @keyframes gradientRun {
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         @media (max-width: 600px) {
             h1 { font-size: 18px; }
