@@ -17,48 +17,46 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        .banner {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            border-radius: 10px;
-            margin: 20px 0;
-            animation: fadeIn 1s ease-in;
-        }
         h1 {
             font-size: 28px;
             margin: 10px 0;
+            animation: glow 2s infinite; /* Пульсирующее свечение для urgency */
         }
         p {
             font-size: 18px;
             margin: 10px 0;
         }
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px; /* Отступы между кнопками */
+        }
         .button-img {
-            width: 120px; /* Прямоугольная ширина */
-            height: 60px; /* Прямоугольная высота */
-            margin: 10px;
+            width: 120px;
+            height: 60px;
             border-radius: 10px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(90deg, #ff4b2b, #ff416c, #6f42c1, #ff4b2b); /* Градиент для анимации */
-            background-size: 200% 100%; /* Для бегущего эффекта */
-            animation: gradientRun 3s linear infinite; /* Бегущий градиент */
+            background: linear-gradient(90deg, #ff4b2b, #ff416c, #6f42c1, #ff4b2b);
+            background-size: 200% 100%;
+            animation: gradientRun 3s linear infinite, bounce 1s ease-in-out; /* Бегущий градиент + bounce */
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .button-img:hover {
-            transform: scale(1.05); /* Лёгкое увеличение */
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Свечение */
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
         }
         .button-img::after {
-            content: attr(data-promo); /* Промокод из атрибута */
+            content: attr(data-promo);
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 12px;
-            color: #ffd700; /* Золотой цвет */
-            text-shadow: 0 0 5px rgba(0,0,0,0.7); /* Тень для читаемости */
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(0,0,0,0.7);
             z-index: 1;
         }
         .modal {
@@ -88,18 +86,24 @@
             color: #ffd700;
             margin: 10px 0;
         }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
+            50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff4b2b; }
+            100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
         @keyframes gradientRun {
             0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; } /* Градиент "бежит" по кнопке */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            100% { background-position: 200% 50%; }
         }
         @media (max-width: 600px) {
             h1 { font-size: 22px; }
-            .button-img { width: 90px; height: 45px; margin: 5px; } /* Адаптация для мобильных */
+            .button-img { width: 90px; height: 45px; margin: 5px; }
             .button-img::after { font-size: 10px; }
+            .buttons-container { flex-direction: column; } /* В столбец на мобильных */
         }
     </style>
 </head>
