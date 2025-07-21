@@ -3,65 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Забери 400 Бонусов!</title>
+    <title>400 Free Spins Promo</title>
     <style>
         body {
-            background-color: #000;
+            background: linear-gradient(to bottom, #111, #222);
             color: #fff;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
+            padding: 30px;
             margin: 0;
-            padding: 20px;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
+        .badge {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background-image: url('https://via.placeholder.com/160'); /* Замените на ваш логотип, например, 'badge.png' */
+            background-size: cover;
+            margin: 20px auto;
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            animation: fadeIn 1s ease-in;
+        }
         h1 {
-            font-size: 28px;
-            margin: 10px 0;
-            animation: glow 2s infinite; /* Пульсирующее свечение */
+            font-size: 22px;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+            animation: glow 2s infinite;
         }
-        p {
-            font-size: 18px;
-            margin: 10px 0;
+        .warning {
+            font-size: 15px;
+            color: #ff5050;
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite;
         }
-        .buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px; /* Отступы между кнопками */
-        }
-        .button {
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 50px; /* Круглые края, как раньше */
-            color: #fff;
+        .btn {
+            display: block;
+            width: 85%;
+            max-width: 360px;
+            margin: 15px auto;
+            padding: 15px;
+            background: linear-gradient(90deg, #00c6ff, #ff00ff);
+            border-radius: 50px;
+            color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(90deg, #ff4b2b, #ff416c, #6f42c1, #ff4b2b);
-            background-size: 200% 100%;
-            animation: gradientRun 3s linear infinite, bounce 1s ease-in-out; /* Бегущий градиент + bounce */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: bounce 1s ease-in-out, gradientRun 3s linear infinite;
         }
-        .button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255,255,255,0.7);
         }
-        .button::after {
-            content: attr(data-promo); /* Промокод, если задан */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .telegram-btn {
+            background: linear-gradient(90deg, #0084ff, #6633ff);
+        }
+        footer {
+            margin-top: 40px;
             font-size: 12px;
-            color: #ffd700;
-            text-shadow: 0 0 5px rgba(0,0,0,0.7);
-            z-index: 1;
+            color: #888;
         }
         .modal {
             display: none;
@@ -85,10 +88,9 @@
             background: rgba(0,0,0,0.7);
             z-index: 999;
         }
-        .promo-code {
-            font-size: 20px;
-            color: #ffd700;
-            margin: 10px 0;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
         @keyframes glow {
             0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
@@ -103,9 +105,13 @@
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         @media (max-width: 600px) {
-            h1 { font-size: 22px; }
-            .button { padding: 10px 20px; font-size: 14px; margin: 5px; }
+            h1 { font-size: 18px; }
+            .btn { width: 95%; padding: 10px; font-size: 14px; }
         }
     </style>
 </head>
@@ -115,8 +121,7 @@
     <div id="modal" class="modal">
         <h2>Поздравляем!</h2>
         <p>Эксклюзивный бонус: 400 FS + 100% депозит!</p>
-        <div class="promo-code">Промокод: BONUS400</div>
-        <a href="https://example.com/exclusive" class="button" data-promo="BONUS">Забрать</a>
+        <a href="https://example.com/exclusive" class="btn">Забрать бонус</a>
     </div>
     <script src="script.js"></script>
 </body>
