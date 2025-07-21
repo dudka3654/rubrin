@@ -14,5 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <footer>© 2025 Все права защищены | Только 18+</footer>
         `;
-    }, 700);
+    }, 700); // задержка от ботов
 });
