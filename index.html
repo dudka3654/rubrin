@@ -21,10 +21,11 @@
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            background-image: url('logo.png'); /* Замените на ваш логотип */
+            background-image: url('logo.png'); /* Ваш логотип */
             background-size: cover;
             margin: 20px auto;
             box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            animation: fadeIn 1s ease-in;
         }
         h1 {
             font-size: 22px;
@@ -41,61 +42,28 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px; /* Отступы между кнопками */
+            gap: 15px;
         }
         .btn {
             display: block;
             width: 85%;
             max-width: 360px;
             margin: 15px auto;
-            padding: 15px 30px; /* Увеличил padding для больше пространства */
+            padding: 15px 30px;
             background: linear-gradient(90deg, #00c6ff, #ff00ff);
             border-radius: 50px;
             color: white;
             text-decoration: none;
             font-weight: bold;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
-            animation: bounce 1s ease-in-out, gradientRun 3s linear infinite;
+            animation: pulseScale 2s infinite, gradientRun 3s linear infinite; /* Пульсация + бегущий градиент */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .btn:hover {
             transform: scale(1.1);
             box-shadow: 0 0 25px rgba(255,255,255,0.7);
-        }
-        .btn::before {
-            content: '🎰'; /* Иконка слота */
-            font-size: 1.5em;
-            margin-right: 10px;
-            animation: spin 1s linear infinite; /* Вращение иконки */
-        }
-        .btn::after {
-            content: attr(data-info); /* Дополнительная инфа при наведении */
-            display: none;
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8em;
-            color: #ffd700;
-            text-shadow: 0 0 5px rgba(0,0,0,0.7);
-            background: rgba(0,0,0,0.7);
-            padding: 5px 10px;
-            border-radius: 5px;
-            white-space: nowrap;
-        }
-        .btn:hover::after {
-            display: block;
-        }
-        .btn.urgency {
-            animation: pulse 1.5s infinite; /* Пульсация для urgency */
-        }
-        .btn.red {
-            background: linear-gradient(90deg, #ff4b2b, #ff416c); /* A/B-тест красного */
-        }
-        .btn.blue {
-            background: linear-gradient(90deg, #00c6ff, #0072ff); /* A/B-тест синего */
         }
         .telegram-btn {
             background: linear-gradient(90deg, #0084ff, #6633ff);
@@ -105,39 +73,32 @@
             font-size: 12px;
             color: #888;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #222;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px #fff;
-            z-index: 1000;
-        }
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        .marquee {
             width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 999;
+            overflow: hidden;
+            background: #ffd700; /* Жёлтый фон */
+            color: #000;
+            padding: 10px 0;
+            margin-top: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 10s linear infinite; /* Бегущая строка */
+            padding-left: 100%; /* Начало вне экрана */
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.6; }
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes pulseScale {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
         }
         @keyframes gradientRun {
             0% { background-position: 0% 50%; }
@@ -152,12 +113,6 @@
 </head>
 <body>
     <div id="content-container" class="container"></div>
-    <div id="overlay" class="overlay" onclick="closeModal()"></div>
-    <div id="modal" class="modal">
-        <h2>Поздравляем!</h2>
-        <p>Эксклюзивный бонус: 400 FS + 100% депозит!</p>
-        <a href="https://example.com/exclusive" class="btn">Забрать бонус</a>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
