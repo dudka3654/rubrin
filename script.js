@@ -1,28 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('content-container');
-    const userLang = navigator.language || navigator.userLanguage;
 
-    let heroText = '<h1>Забери 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ!</h1>';
-    heroText += '<p>Важно: Введи промокод перед входом!</p>';
-    heroText += '<button onclick="openModal()" class="button" data-promo="BOX400">Открыть Бонус</button>';
-
-    let bonuses = '<div class="buttons-container">';  // Логичный ряд
-    if (userLang.startsWith('ru') || userLang.startsWith('kz')) {
-        bonuses += '<a href="https://example.com/irwin" class="button" data-promo="IRWIN400">Irwin 400 FS</a>';
-        bonuses += '<a href="https://example.com/flagman" class="button" data-promo="FLAG400">Flagman 400 FS</a>';
-        bonuses += '<a href="https://example.com/martin" class="button" data-promo="MARTIN400">Martin 400 FS</a>';
-        bonuses += '<a href="https://example.com/bonus" class="button" data-promo="BONUS400">Глобальный Бонус</a>';
-    } else {
-        bonuses += '<a href="https://example.com/global" class="button" data-promo="GLOBAL400">Global 400 FS</a>';
-    }
-    bonuses += '</div>';
-
-    let testimonials = '<div class="testimonial">"Выиграл 5000!" - Алексей</div>';
-    testimonials += '<div class="testimonial">"Лучшие бонусы!" - Anna</div>';
-
-    let footer = '<a href="https://t.me/yourchannel" class="button" data-promo="TGJOIN">Telegram</a>';
-
-    const dynamicContent = heroText + bonuses + testimonials + footer;
+    const dynamicContent = `
+        <div class="badge"></div>
+        <h1>🎰 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ 🎰<br>МОЖНО ЗАБРАТЬ В ЛЮБОМ ПРОЕКТЕ НИЖЕ</h1>
+        <div class="warning">⚠️ Важно: перед заходом на сайт выключить VPN ⚠️</div>
+        <a href="#" class="btn">🇰🇿 🇷🇺 IRWIN 400 FS 🇰🇿 🇷🇺</a>
+        <a href="#" class="btn">🇰🇿 🇷🇺 FLAGMAN 400 FS 🇰🇿 🇷🇺</a>
+        <a href="#" class="btn">🇰🇿 🇷🇺 MARTIN 400 FS 🇰🇿 🇷🇺</a>
+        <a href="#" class="btn">🎁 GET A 400 FREE SPINS BONUS 🌍</a>
+        <a href="#" class="btn telegram-btn">📢 Telegram: бонусы, розыгрыши, ваучеры</a>
+        <footer>© 2025 Promo Site. All rights reserved.</footer>
+    `;
 
     container.innerHTML = dynamicContent;
 });
