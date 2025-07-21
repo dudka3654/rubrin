@@ -3,55 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Забери 400 Free Spins Сейчас!</title>
-    <!-- Улучшенные стили: градиенты, анимации, responsive -->
+    <title>Забери 400 Бонусов!</title>
     <style>
         body {
             background-color: #000;
             color: #fff;
-            font-family: 'Arial', sans-serif;
+            font-family: sans-serif;
             text-align: center;
             margin: 0;
             padding: 20px;
-            overflow-x: hidden;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
-        h1 {
-            font-size: 28px;
+        .banner {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px; /* Лёгкая скруглённость для баннера */
             margin: 20px 0;
             animation: fadeIn 1s ease-in;
+        }
+        h1 {
+            font-size: 28px;
+            margin: 10px 0;
         }
         p {
             font-size: 18px;
             margin: 10px 0;
         }
-        .button {
-            display: inline-block;
-            margin: 15px;
-            padding: 15px 30px;
-            border-radius: 50px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
+        .button-img {
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(90deg, #ff4b2b, #ff416c, #6f42c1, #ff4b2b); /* Градиент для анимации */
+            background-size: 200% 100%; /* Для бегущего эффекта */
+            animation: gradientRun 3s linear infinite; /* Постоянная анимация градиента */
         }
-        .button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(255,255,255,0.3);
+        .button-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Свечение на hover */
         }
-        .red-gradient { background: linear-gradient(90deg, #ff4b2b, #ff416c); }
-        .blue-gradient { background: linear-gradient(90deg, #007bff, #6f42c1); }
-        .purple-gradient { background: linear-gradient(90deg, #6f42c1, #e83e8c); }
-        .testimonial { font-style: italic; margin: 20px; color: #ddd; }
-        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #222; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.5); z-index: 1000; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media (max-width: 600px) { h1 { font-size: 22px; } .button { width: 90%; margin: 10px auto; } }
+        @keyframes gradientRun {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; } /* Градиент "бежит" по кнопке */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .promo-code {
+            font-size: 20px;
+            color: #ffd700;
+            margin: 10px 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #fff;
+            z-index: 1000;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 22px; }
+            .button-img { width: 60px; height: 60px; margin: 5px; }
+        }
     </style>
 </head>
 <body>
@@ -59,8 +96,9 @@
     <div id="overlay" class="overlay" onclick="closeModal()"></div>
     <div id="modal" class="modal">
         <h2>Поздравляем!</h2>
-        <p>Вы открыли эксклюзивный бонус: 400 FS + 100% на депозит!</p>
-        <a href="https://example.com/exclusive-bonus" class="button red-gradient">Забрать сейчас</a>
+        <p>Эксклюзивный бонус: 400 FS + 100% депозит!</p>
+        <div class="promo-code">Промокод: BONUS400</div>
+        <a href="https://example.com/exclusive"><img src="bonus-modal-btn.png" class="button-img"></a>
     </div>
     <script src="script.js"></script>
 </body>
