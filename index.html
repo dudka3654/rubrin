@@ -22,12 +22,14 @@
             background-size: cover;
             margin: 20px auto;
             box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            animation: fadeIn 1s ease-in;
         }
 
         h1 {
             font-size: 22px;
             margin-top: 15px;
             text-shadow: 0 0 10px rgba(255,255,255,0.2);
+            animation: glow 2s infinite;
         }
 
         .warning {
@@ -35,11 +37,6 @@
             color: #ff5050;
             margin-bottom: 30px;
             animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
         }
 
         .btn {
@@ -55,6 +52,7 @@
             font-weight: bold;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: bounce 1s ease-in-out, gradientRun 3s linear infinite;
         }
 
         .btn:hover {
@@ -71,12 +69,37 @@
             font-size: 12px;
             color: #888;
         }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
+            50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff4b2b; }
+            100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes gradientRun {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
+    <div id="content-container"></div>
 
-<div id="content-container"></div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
