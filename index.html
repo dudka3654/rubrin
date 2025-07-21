@@ -12,41 +12,43 @@
             text-align: center;
             padding: 30px;
             margin: 0;
-            user-select: none; /* Защита от выделения */
-            -webkit-user-select: none;
         }
-
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
         .badge {
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            background-image: url('logo.png');
+            background-image: url('logo.png'); /* Замените на ваш логотип */
             background-size: cover;
             margin: 20px auto;
             box-shadow: 0 0 15px rgba(255,255,255,0.3);
-            animation: fadeIn 1.5s ease-out;
         }
-
         h1 {
             font-size: 22px;
             margin-top: 15px;
             text-shadow: 0 0 10px rgba(255,255,255,0.2);
-            animation: glow 2s infinite;
         }
-
         .warning {
             font-size: 15px;
             color: #ff5050;
             margin-bottom: 30px;
             animation: pulse 1.5s infinite;
         }
-
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px; /* Отступы между кнопками */
+        }
         .btn {
             display: block;
             width: 85%;
             max-width: 360px;
             margin: 15px auto;
-            padding: 15px;
+            padding: 15px 30px; /* Увеличил padding для больше пространства */
             background: linear-gradient(90deg, #00c6ff, #ff00ff);
             border-radius: 50px;
             color: white;
@@ -54,103 +56,108 @@
             font-weight: bold;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: bounce 1s ease-in-out, gradientRun 3s linear infinite, fadeInUp 1.2s ease;
-            opacity: 0;
-            animation-fill-mode: forwards;
+            position: relative;
+            overflow: hidden;
+            animation: bounce 1s ease-in-out, gradientRun 3s linear infinite;
         }
-
         .btn:hover {
             transform: scale(1.1);
             box-shadow: 0 0 25px rgba(255,255,255,0.7);
         }
-
+        .btn::before {
+            content: '🎰'; /* Иконка слота */
+            font-size: 1.5em;
+            margin-right: 10px;
+            animation: spin 1s linear infinite; /* Вращение иконки */
+        }
+        .btn::after {
+            content: attr(data-info); /* Дополнительная инфа при наведении */
+            display: none;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8em;
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+        .btn:hover::after {
+            display: block;
+        }
+        .btn.urgency {
+            animation: pulse 1.5s infinite; /* Пульсация для urgency */
+        }
+        .btn.red {
+            background: linear-gradient(90deg, #ff4b2b, #ff416c); /* A/B-тест красного */
+        }
+        .btn.blue {
+            background: linear-gradient(90deg, #00c6ff, #0072ff); /* A/B-тест синего */
+        }
         .telegram-btn {
             background: linear-gradient(90deg, #0084ff, #6633ff);
         }
-
         footer {
             margin-top: 40px;
             font-size: 12px;
             color: #888;
-            animation: fadeIn 2s ease;
         }
-
-        /* Адаптация для мобильных */
-        @media (max-width: 600px) {
-            body {
-                padding: 15px;
-            }
-            .badge {
-                width: 120px;
-                height: 120px;
-            }
-            h1 {
-                font-size: 18px;
-            }
-            .btn {
-                width: 95%;
-                padding: 12px;
-                font-size: 14px;
-            }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #fff;
+            z-index: 1000;
         }
-
-        /* Анимации */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.6; }
         }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
-            50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff4b2b; }
-            100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-
         @keyframes gradientRun {
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 600px) {
+            h1 { font-size: 18px; }
+            .btn { width: 95%; padding: 10px; font-size: 14px; }
+            .buttons-container { flex-direction: column; }
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- Защита от правого клика -->
-
-    <div id="content-container"></div>
-
-   <script>
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        document.getElementById('content-container').innerHTML = `
-            <div class="badge"></div>
-            <h1>🎰600 ВРАЩЕНИЙ БЕЗ ВАЙДЖЕРА🎰<br>МОЖНО ЗАБРАТЬ В ЛЮБОМ ПРОЕКТЕ НИЖЕ</h1>
-            <div class="warning">⚠️ Важно: перед заходом на сайт выключить VPN ⚠️</div>
-
-            <a href="https://martin-way-three.com/c2558e93e" class="btn" target="_blank" style="animation-delay:0.2s;">MARTIN 600 FS +  400FS</a>
-            <a href="https://flagman-way-three.com/c5f5eaf64" class="btn" target="_blank" style="animation-delay:0.4s;">FLAGMAN 600 FS + 400FS</a>
-            <a href="https://martin.com/?ref=11223" class="btn" target="_blank" style="animation-delay:0.6s;">IRWIN 600 FS + 400FS</a>
-            <a href="https://globalbonus.com/?ref=44556" class="btn" target="_blank" style="animation-delay:0.8s;">GIZBO 600 FS + 400FS</a>
-            <a href="https://t.me/yourtelegramchannel" class="btn telegram-btn" target="_blank" style="animation-delay:1s;">LEX 600 FS + 400FS</a>
-
-            <footer>© 2025 Все права защищены | Только 18+</footer>
-        `;
-    }, 500);
-});
-</script>
-
-
+<body>
+    <div id="content-container" class="container"></div>
+    <div id="overlay" class="overlay" onclick="closeModal()"></div>
+    <div id="modal" class="modal">
+        <h2>Поздравляем!</h2>
+        <p>Эксклюзивный бонус: 400 FS + 100% депозит!</p>
+        <a href="https://example.com/exclusive" class="btn">Забрать бонус</a>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
