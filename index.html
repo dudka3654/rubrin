@@ -1,97 +1,82 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎰 400 Free Spins Promo 🎰</title>
-  <style>
-    body {
-      background: linear-gradient(to bottom, #111, #222);
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      padding: 30px;
-      margin: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .badge {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background-image: url('logo.png');
-      background-size: cover;
-      margin: 20px auto;
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
-      animation: fadeIn 1s ease-in;
-    }
-    h1 {
-      font-size: 22px;
-      margin-top: 15px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
-      animation: glow 2s infinite;
-    }
-    .warning {
-      font-size: 15px;
-      color: #ff5050;
-      margin-bottom: 30px;
-      animation: pulse 1.5s infinite;
-    }
-    .btn {
-      display: block;
-      width: 85%;
-      max-width: 360px;
-      margin: 15px auto;
-      padding: 15px;
-      background: linear-gradient(90deg, #00c6ff, #ff00ff);
-      border-radius: 50px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: bounce 1s ease-in-out, gradientRun 3s linear infinite;
-    }
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(255,255,255,0.7);
-    }
-    .telegram-btn {
-      background: linear-gradient(90deg, #0084ff, #6633ff);
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: #888;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
-      50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff4b2b; }
-      100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    @keyframes gradientRun {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>400 Free Spins Promo</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #111, #222);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 30px;
+            margin: 0;
+        }
+
+        .badge {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background-image: url('logo.png');
+            background-size: cover;
+            margin: 20px auto;
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+
+        .warning {
+            font-size: 15px;
+            color: #ff5050;
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .btn {
+            display: block;
+            width: 85%;
+            max-width: 360px;
+            margin: 15px auto;
+            padding: 15px;
+            background: linear-gradient(90deg, #00c6ff, #ff00ff);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255,255,255,0.7);
+        }
+
+        .telegram-btn {
+            background: linear-gradient(90deg, #0084ff, #6633ff);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-  <div id="content-container" class="container"></div>
 
-  <script src="script.js"></script>
+<div id="content-container"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
