@@ -2,15 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('content-container');
     const userLang = navigator.language || navigator.userLanguage;
 
-    let heroText = '<div style="position: relative;">';
-    heroText += '<img src="banner.png" alt="Баннер" class="banner">';
-    heroText += '<div class="promo-code" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Промокод: SPINS400</div>';
-    heroText += '</div>';
-    heroText += '<h1>Забери 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ!</h1>';
+    let heroText = '<h1>Забери 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ!</h1>';
     heroText += '<p>Важно: Введи промокод перед входом!</p>';
     heroText += '<button onclick="openModal()" class="button-img" style="background-image: url(\'bonus-box-btn.png\');" data-promo="BOX400"></button>';
 
-    let bonuses = '';
+    let bonuses = '<div class="buttons-container">';  // Обёртка для логичного ряда
     if (userLang.startsWith('ru') || userLang.startsWith('kz')) {
         bonuses += '<a href="https://example.com/irwin"><img src="irwin-btn.png" alt="Irwin" class="button-img" data-promo="IRWIN400"></a>';
         bonuses += '<a href="https://example.com/flagman"><img src="flagman-btn.png" alt="Flagman" class="button-img" data-promo="FLAG400"></a>';
@@ -19,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         bonuses += '<a href="https://example.com/global"><img src="bonus-btn.png" alt="Global" class="button-img" data-promo="GLOBAL400"></a>';
     }
+    bonuses += '</div>';
 
     let testimonials = '<div class="testimonial">"Выиграл 5000!" - Алексей</div>';
     testimonials += '<div class="testimonial">"Лучшие бонусы!" - Anna</div>';
