@@ -21,7 +21,7 @@
             width: 100%;
             max-width: 600px;
             height: auto;
-            border-radius: 10px; /* Лёгкая скруглённость для баннера */
+            border-radius: 10px;
             margin: 20px 0;
             animation: fadeIn 1s ease-in;
         }
@@ -34,34 +34,32 @@
             margin: 10px 0;
         }
         .button-img {
-            width: 80px;
-            height: 80px;
+            width: 120px; /* Прямоугольная ширина */
+            height: 60px; /* Прямоугольная высота */
             margin: 10px;
             border-radius: 10px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
             background: linear-gradient(90deg, #ff4b2b, #ff416c, #6f42c1, #ff4b2b); /* Градиент для анимации */
             background-size: 200% 100%; /* Для бегущего эффекта */
-            animation: gradientRun 3s linear infinite; /* Постоянная анимация градиента */
+            animation: gradientRun 3s linear infinite; /* Бегущий градиент */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .button-img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Свечение на hover */
+            transform: scale(1.05); /* Лёгкое увеличение */
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Свечение */
         }
-        @keyframes gradientRun {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; } /* Градиент "бежит" по кнопке */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .promo-code {
-            font-size: 20px;
-            color: #ffd700;
-            margin: 10px 0;
+        .button-img::after {
+            content: attr(data-promo); /* Промокод из атрибута */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            color: #ffd700; /* Золотой цвет */
+            text-shadow: 0 0 5px rgba(0,0,0,0.7); /* Тень для читаемости */
+            z-index: 1;
         }
         .modal {
             display: none;
@@ -85,9 +83,23 @@
             background: rgba(0,0,0,0.7);
             z-index: 999;
         }
+        .promo-code {
+            font-size: 20px;
+            color: #ffd700;
+            margin: 10px 0;
+        }
+        @keyframes gradientRun {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; } /* Градиент "бежит" по кнопке */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         @media (max-width: 600px) {
             h1 { font-size: 22px; }
-            .button-img { width: 60px; height: 60px; margin: 5px; }
+            .button-img { width: 90px; height: 45px; margin: 5px; } /* Адаптация для мобильных */
+            .button-img::after { font-size: 10px; }
         }
     </style>
 </head>
@@ -98,7 +110,7 @@
         <h2>Поздравляем!</h2>
         <p>Эксклюзивный бонус: 400 FS + 100% депозит!</p>
         <div class="promo-code">Промокод: BONUS400</div>
-        <a href="https://example.com/exclusive"><img src="bonus-modal-btn.png" class="button-img"></a>
+        <a href="https://example.com/exclusive"><img src="bonus-modal-btn.png" class="button-img" data-promo="BONUS"></a>
     </div>
     <script src="script.js"></script>
 </body>
