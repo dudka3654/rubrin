@@ -4,23 +4,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let heroText = '<h1>Забери 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ!</h1>';
     heroText += '<p>Важно: Введи промокод перед входом!</p>';
-    heroText += '<button onclick="openModal()" class="button-img" style="background-image: url(\'bonus-box-btn.png\');" data-promo="BOX400"></button>';
+    heroText += '<button onclick="openModal()" class="button" data-promo="BOX400">Открыть Бонус</button>';
 
-    let bonuses = '<div class="buttons-container">';  // Обёртка для логичного ряда
+    let bonuses = '<div class="buttons-container">';  // Логичный ряд
     if (userLang.startsWith('ru') || userLang.startsWith('kz')) {
-        bonuses += '<a href="https://example.com/irwin"><img src="irwin-btn.png" alt="Irwin" class="button-img" data-promo="IRWIN400"></a>';
-        bonuses += '<a href="https://example.com/flagman"><img src="flagman-btn.png" alt="Flagman" class="button-img" data-promo="FLAG400"></a>';
-        bonuses += '<a href="https://example.com/martin"><img src="martin-btn.png" alt="Martin" class="button-img" data-promo="MARTIN400"></a>';
-        bonuses += '<a href="https://example.com/bonus"><img src="bonus-btn.png" alt="Bonus" class="button-img" data-promo="BONUS400"></a>';
+        bonuses += '<a href="https://example.com/irwin" class="button" data-promo="IRWIN400">Irwin 400 FS</a>';
+        bonuses += '<a href="https://example.com/flagman" class="button" data-promo="FLAG400">Flagman 400 FS</a>';
+        bonuses += '<a href="https://example.com/martin" class="button" data-promo="MARTIN400">Martin 400 FS</a>';
+        bonuses += '<a href="https://example.com/bonus" class="button" data-promo="BONUS400">Глобальный Бонус</a>';
     } else {
-        bonuses += '<a href="https://example.com/global"><img src="bonus-btn.png" alt="Global" class="button-img" data-promo="GLOBAL400"></a>';
+        bonuses += '<a href="https://example.com/global" class="button" data-promo="GLOBAL400">Global 400 FS</a>';
     }
     bonuses += '</div>';
 
     let testimonials = '<div class="testimonial">"Выиграл 5000!" - Алексей</div>';
     testimonials += '<div class="testimonial">"Лучшие бонусы!" - Anna</div>';
 
-    let footer = '<a href="https://t.me/yourchannel"><img src="telegram-btn.png" alt="Telegram" class="button-img" data-promo="TGJOIN"></a>';
+    let footer = '<a href="https://t.me/yourchannel" class="button" data-promo="TGJOIN">Telegram</a>';
 
     const dynamicContent = heroText + bonuses + testimonials + footer;
 
