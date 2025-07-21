@@ -12,6 +12,8 @@
             text-align: center;
             padding: 30px;
             margin: 0;
+            user-select: none; /* Защита от выделения */
+            -webkit-user-select: none;
         }
 
         .badge {
@@ -22,7 +24,7 @@
             background-size: cover;
             margin: 20px auto;
             box-shadow: 0 0 15px rgba(255,255,255,0.3);
-            animation: fadeIn 1s ease-in;
+            animation: fadeIn 1.5s ease-out;
         }
 
         h1 {
@@ -52,7 +54,9 @@
             font-weight: bold;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: bounce 1s ease-in-out, gradientRun 3s linear infinite;
+            animation: bounce 1s ease-in-out, gradientRun 3s linear infinite, fadeInUp 1.2s ease;
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
 
         .btn:hover {
@@ -68,8 +72,29 @@
             margin-top: 40px;
             font-size: 12px;
             color: #888;
+            animation: fadeIn 2s ease;
         }
 
+        /* Адаптация для мобильных */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            .badge {
+                width: 120px;
+                height: 120px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            .btn {
+                width: 95%;
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+
+        /* Анимации */
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.6; }
@@ -95,11 +120,39 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;"> <!-- Защита от правого клика -->
+
     <div id="content-container"></div>
 
-    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            document.getElementById('content-container').innerHTML = `
+                <div class="badge"></div>
+                <h1>🎰 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ 🎰<br>МОЖНО ЗАБРАТЬ В ЛЮБОМ ПРОЕКТЕ НИЖЕ</h1>
+                <div class="warning">⚠️ Важно: перед заходом на сайт выключить VPN ⚠️</div>
+                <a href="#" class="btn" style="animation-delay:0.2s;">🇰🇿 🇷🇺 IRWIN 400 FS 🇰🇿 🇷🇺</a>
+                <a href="#" class="btn" style="animation-delay:0.4s;">🇰🇿 🇷🇺 FLAGMAN 400 FS 🇰🇿 🇷🇺</a>
+                <a href="#" class="btn" style="animation-delay:0.6s;">🇰🇿 🇷🇺 MARTIN 400 FS 🇰🇿 🇷🇺</a>
+                <a href="#" class="btn" style="animation-delay:0.8s;">🎁 GET A 400 FREE SPINS BONUS 🌍</a>
+                <a href="#" class="btn telegram-btn" style="animation-delay:1s;">📢 Telegram: бонусы, розыгрыши, ваучеры</a>
+                <footer>© 2025 Все права защищены | Только 18+</footer>
+            `;
+        }, 500); // задержка от ботов
+    });
+
+    // Дополнительная защита от копирования и выделения
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && ['c', 'u', 's'].includes(e.key.toLowerCase())) e.preventDefault();
+    });
+    </script>
+
 </body>
 </html>
