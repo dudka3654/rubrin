@@ -20,7 +20,7 @@
         h1 {
             font-size: 28px;
             margin: 10px 0;
-            animation: glow 2s infinite; /* Пульсирующее свечение для urgency */
+            animation: glow 2s infinite; /* Пульсирующее свечение */
         }
         p {
             font-size: 18px;
@@ -32,10 +32,14 @@
             justify-content: center;
             gap: 15px; /* Отступы между кнопками */
         }
-        .button-img {
-            width: 120px;
-            height: 60px;
-            border-radius: 10px;
+        .button {
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 50px; /* Круглые края, как раньше */
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -44,12 +48,12 @@
             animation: gradientRun 3s linear infinite, bounce 1s ease-in-out; /* Бегущий градиент + bounce */
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .button-img:hover {
+        .button:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
         }
-        .button-img::after {
-            content: attr(data-promo);
+        .button::after {
+            content: attr(data-promo); /* Промокод, если задан */
             position: absolute;
             top: 50%;
             left: 50%;
@@ -101,9 +105,7 @@
         }
         @media (max-width: 600px) {
             h1 { font-size: 22px; }
-            .button-img { width: 90px; height: 45px; margin: 5px; }
-            .button-img::after { font-size: 10px; }
-            .buttons-container { flex-direction: column; } /* В столбец на мобильных */
+            .button { padding: 10px 20px; font-size: 14px; margin: 5px; }
         }
     </style>
 </head>
@@ -114,7 +116,7 @@
         <h2>Поздравляем!</h2>
         <p>Эксклюзивный бонус: 400 FS + 100% депозит!</p>
         <div class="promo-code">Промокод: BONUS400</div>
-        <a href="https://example.com/exclusive"><img src="bonus-modal-btn.png" class="button-img" data-promo="BONUS"></a>
+        <a href="https://example.com/exclusive" class="button" data-promo="BONUS">Забрать</a>
     </div>
     <script src="script.js"></script>
 </body>
