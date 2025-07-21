@@ -54,13 +54,6 @@
       cursor: pointer;
     }
 
-    .promo-button:nth-child(1) { border-color: #5ce1e6; box-shadow: 0 0 20px rgba(92, 225, 230, 0.3); }
-    .promo-button:nth-child(2) { border-color: #ff8a00; box-shadow: 0 0 20px rgba(255, 138, 0, 0.3); }
-    .promo-button:nth-child(3) { border-color: #ff2d95; box-shadow: 0 0 20px rgba(255, 45, 149, 0.3); }
-    .promo-button:nth-child(4) { border-color: #00e676; box-shadow: 0 0 20px rgba(0, 230, 118, 0.3); }
-    .promo-button:nth-child(5) { border-color: #ff3d00; box-shadow: 0 0 20px rgba(255, 61, 0, 0.3); }
-    .promo-button:nth-child(6) { border-color: #42a5f5; box-shadow: 0 0 20px rgba(66, 165, 245, 0.3); }
-
     .promo-top {
       display: flex;
       align-items: center;
@@ -144,11 +137,34 @@
       const isBot = /bot|crawl|spider|crawling/i.test(navigator.userAgent) || !('onscroll' in window);
       if (isBot) {
         document.body.innerHTML = '<p style="color:white;text-align:center">Loading...</p>';
-      } else {
-        document.querySelectorAll('.promo-logo').forEach((el, idx) => {
-          el.style.backgroundImage = `url('logo-${idx + 1}.png')`;
-        });
+        return;
       }
+
+      fetch('links.json')
+        .then(res => res.json())
+        .then(data => {
+          const container = document.querySelector('.promo-container');
+          data.forEach((item, idx) => {
+            const block = document.createElement('a');
+            block.className = 'promo-button';
+            block.href = item.url;
+            block.target = '_blank';
+            block.innerHTML = `
+              <div class="promo-top">
+                <div class="promo-logo" style="background-image: url('${item.logo}')"></div>
+                <div class="promo-info">
+                  <div class="title">${item.title}</div>
+                  <div class="code">ПРОМОКОД: ${item.code}</div>
+                  <div class="cta">${item.cta}</div>
+                </div>
+              </div>
+              <div class="promo-marquee">
+                <span>${item.note}</span>
+              </div>
+            `;
+            container.appendChild(block);
+          });
+        });
     });
   </script>
 </head>
@@ -158,72 +174,6 @@
     <div class="warning">⚠️ Важно: перед заходом на сайт выключить VPN ⚠️</div>
   </div>
 
-  <div class="promo-container">
-    <a href="https://martin-way-three.com/c2558e93e" class="promo-button">
-      <div class="promo-top">
-        <div class="promo-logo"></div>
-        <div class="promo-info">
-          <div class="title">MARTIN 600 FS</div>
-          <div class="code">ПРОМОКОД: DUBRIN</div>
-          <div class="cta">🔥 ЗАБРАТЬ СЕЙЧАС</div>
-        </div>
-      </div>
-      <div class="promo-marquee">
-        <span>БОНУС АКТИВЕН ДО 23.07.2025</span>
-      </div>
-    </a>
-    <a href="https://flagman-way-three.com/c5f5eaf64" class="promo-button">
-      <div class="promo-top">
-        <div class="promo-logo"></div>
-        <div class="promo-info">
-          <div class="title">FLAGMAN 600 FS</div>
-          <div class="code">ПРОМОКОД: DUBRIN</div>
-          <div class="cta">🎁 ПОЛУЧИТЬ БОНУС</div>
-        </div>
-      </div>
-      <div class="promo-marquee">
-        <span>БОНУС АКТИВЕН ДО 23.07.2025</span>
-      </div>
-    </a>
-    <a href="https://gizbo-way-three.com/cd7e901b6" class="promo-button">
-      <div class="promo-top">
-        <div class="promo-logo"></div>
-        <div class="promo-info">
-          <div class="title">GIZBO 600 FS</div>
-          <div class="code">ПРОМОКОД: DUBRIN</div>
-          <div class="cta">💥 ЗАБРАТЬ СЕЙЧАС</div>
-        </div>
-      </div>
-      <div class="promo-marquee">
-        <span>БОНУС АКТИВЕН ДО 23.07.2025</span>
-      </div>
-    </a>
-    <a href="https://lex-ircp01.com/c46817180" class="promo-button">
-      <div class="promo-top">
-        <div class="promo-logo"></div>
-        <div class="promo-info">
-          <div class="title">LEX 600 FS</div>
-          <div class="code">ПРОМОКОД: DUBRIN</div>
-          <div class="cta">🚀 ПОЛУЧИТЬ БОНУС</div>
-        </div>
-      </div>
-      <div class="promo-marquee">
-        <span>БОНУС АКТИВЕН ДО 23.07.2025</span>
-      </div>
-    </a>
-    <a href="https://rwn-blcp10.com/ce9bf1827" class="promo-button">
-      <div class="promo-top">
-        <div class="promo-logo"></div>
-        <div class="promo-info">
-          <div class="title">IRWIN 600 FS</div>
-          <div class="code">ПРОМОКОД: DUBRIN</div>
-          <div class="cta">🎯 ЗАБРАТЬ СЕЙЧАС</div>
-        </div>
-      </div>
-      <div class="promo-marquee">
-        <span>БОНУС АКТИВЕН ДО 23.07.2025</span>
-      </div>
-    </a>
-  </div>
+  <div class="promo-container"></div>
 </body>
 </html>
