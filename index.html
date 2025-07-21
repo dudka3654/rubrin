@@ -1,150 +1,199 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>400 Free Spins Promo</title>
-    <style>
-        body {
-            background: linear-gradient(to bottom, #111, #222);
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 30px;
-            margin: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .badge {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background-image: url('logo.png'); /* Ваш логотип */
-            background-size: cover;
-            margin: 20px auto;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
-            animation: fadeIn 1s ease-in;
-        }
-        h1 {
-            font-size: 22px;
-            margin-top: 15px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.2);
-        }
-        .warning {
-            font-size: 15px;
-            color: #ff5050;
-            margin-bottom: 30px;
-            animation: pulse 1.5s infinite;
-        }
-        .buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-        .btn {
-            display: block;
-            width: 85%;
-            max-width: 360px;
-            margin: 15px auto;
-            padding: 15px 30px;
-            background: linear-gradient(90deg, #00c6ff, #ff00ff);
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.3); /* 3D-эффект */
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: pulseScale 2s infinite, gradientRun 3s linear infinite; /* Пульсация + градиент */
-        }
-        .btn::before {
-            content: '🎰'; /* Вращающаяся иконка */
-            font-size: 1.5em;
-            margin-right: 10px;
-            animation: spin 1s linear infinite;
-        }
-        .btn::after {
-            content: attr(data-info); /* Дополнительная инфа при наведении */
-            display: none;
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8em;
-            color: #ffd700;
-            text-shadow: 0 0 5px rgba(0,0,0,0.7);
-            background: rgba(0,0,0,0.7);
-            padding: 5px 10px;
-            border-radius: 5px;
-            white-space: nowrap;
-        }
-        .btn:hover {
-            transform: scale(1.1) translateY(-2px); /* 3D-подъём при наведении */
-            box-shadow: 0 8px 20px rgba(255,255,255,0.7), inset 0 4px 10px rgba(255,255,255,0.5); /* Усиленный блик */
-        }
-        .btn:hover::after {
-            display: block;
-        }
-        .btn.urgency {
-            animation: pulse 1.5s infinite;
-        }
-        .btn.red {
-            background: linear-gradient(90deg, #ff4b2b, #ff416c);
-        }
-        .btn.blue {
-            background: linear-gradient(90deg, #00c6ff, #0072ff);
-        }
-        .telegram-btn {
-            background: linear-gradient(90deg, #0084ff, #6633ff);
-        }
-        .marquee {
-            width: 100%;
-            overflow: hidden;
-            background: #ffd700;
-            color: #000;
-            padding: 10px 0;
-            margin-top: 20px;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 10s linear infinite;
-            padding-left: 100%;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-        @keyframes pulseScale {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-        @keyframes gradientRun {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 18px; }
-            .btn { width: 95%; padding: 10px; font-size: 14px; }
-            .buttons-container { flex-direction: column; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анимированные кнопки</title>
+  <style>
+    body {
+      background: #111;
+      font-family: Arial, sans-serif;
+      padding: 20px 10px 40px;
+      margin: 0;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 10px;
+      animation: glow 2s infinite;
+    }
+
+    .header .warning {
+      font-size: 14px;
+      color: #ff5050;
+      animation: pulse 1.5s infinite;
+    }
+
+    .promo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .promo-button {
+      width: 320px;
+      background: linear-gradient(to bottom right, #1a1a1a, #2b2b2b);
+      border: 2px solid #5ce1e6;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: pulse-glow 2s infinite alternate;
+      box-shadow: 0 0 20px rgba(92, 225, 230, 0.3);
+    }
+
+    .promo-button:nth-child(2) { border-color: #ff8a00; box-shadow: 0 0 20px rgba(255, 138, 0, 0.3); }
+    .promo-button:nth-child(3) { border-color: #ff2d95; box-shadow: 0 0 20px rgba(255, 45, 149, 0.3); }
+    .promo-button:nth-child(4) { border-color: #00e676; box-shadow: 0 0 20px rgba(0, 230, 118, 0.3); }
+    .promo-button:nth-child(5) { border-color: #ff3d00; box-shadow: 0 0 20px rgba(255, 61, 0, 0.3); }
+
+    .promo-top {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .promo-logo {
+      width: 80px;
+      height: 80px;
+      background: url('https://via.placeholder.com/80') no-repeat center/cover;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .promo-info {
+      text-align: left;
+      color: #fff;
+    }
+
+    .promo-info .title {
+      font-weight: bold;
+      font-size: 20px;
+      color: #5ce1e6;
+    }
+
+    .promo-info .code {
+      font-size: 16px;
+      margin-top: 5px;
+      color: #ffffff;
+    }
+
+    .promo-marquee {
+      background: #ffe600;
+      color: #111;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+      border-top: 1px solid #ccc;
+    }
+
+    .promo-marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @keyframes pulse-glow {
+      from { box-shadow: 0 0 10px rgba(92, 225, 230, 0.2); }
+      to { box-shadow: 0 0 30px rgba(92, 225, 230, 0.6); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
+      50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff4b2b; }
+      100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b; }
+    }
+  </style>
 </head>
 <body>
-    <div id="content-container" class="container"></div>
-    <script src="script.js"></script>
+  <div class="header">
+    <h1>🎰 600 БЕСПЛАТНЫХ ВРАЩЕНИЙ 🎰</h1>
+    <div class="warning">⚠️ Важно: перед заходом на сайт выключить VPN ⚠️</div>
+  </div>
+
+  <div class="promo-container">
+    <div class="promo-button">
+      <div class="promo-top">
+        <div class="promo-logo" style="background-image: url('https://via.placeholder.com/80/5ce1e6/000?text=M');"></div>
+        <div class="promo-info">
+          <div class="title">MARTIN 600 FS</div>
+          <div class="code">ПРОМОКОД: DUBRIN</div>
+        </div>
+      </div>
+      <div class="promo-marquee">
+        <span>ВЫВОД ДО 10 МИНУТ  •  ВЫВОД ДО 10 МИНУТ  •</span>
+      </div>
+    </div>
+
+    <div class="promo-button">
+      <div class="promo-top">
+        <div class="promo-logo" style="background-image: url('https://via.placeholder.com/80/ff8a00/000?text=F');"></div>
+        <div class="promo-info">
+          <div class="title">FLAGMAN 600 FS</div>
+          <div class="code">ПРОМОКОД: FLAG123</div>
+        </div>
+      </div>
+      <div class="promo-marquee">
+        <span>ВЫВОД ДО 10 МИНУТ  •  ВЫВОД ДО 10 МИНУТ  •</span>
+      </div>
+    </div>
+
+    <div class="promo-button">
+      <div class="promo-top">
+        <div class="promo-logo" style="background-image: url('https://via.placeholder.com/80/ff2d95/000?text=I');"></div>
+        <div class="promo-info">
+          <div class="title">IRWIN 600 FS</div>
+          <div class="code">ПРОМОКОД: IRW888</div>
+        </div>
+      </div>
+      <div class="promo-marquee">
+        <span>ВЫВОД ДО 10 МИНУТ  •  ВЫВОД ДО 10 МИНУТ  •</span>
+      </div>
+    </div>
+
+    <div class="promo-button">
+      <div class="promo-top">
+        <div class="promo-logo" style="background-image: url('https://via.placeholder.com/80/00e676/000?text=G');"></div>
+        <div class="promo-info">
+          <div class="title">GIZBO 600 FS</div>
+          <div class="code">ПРОМОКОД: GZ500</div>
+        </div>
+      </div>
+      <div class="promo-marquee">
+        <span>ВЫВОД ДО 10 МИНУТ  •  ВЫВОД ДО 10 МИНУТ  •</span>
+      </div>
+    </div>
+
+    <div class="promo-button">
+      <div class="promo-top">
+        <div class="promo-logo" style="background-image: url('https://via.placeholder.com/80/ff3d00/000?text=L');"></div>
+        <div class="promo-info">
+          <div class="title">LEX 600 FS</div>
+          <div class="code">ПРОМОКОД: LEXX</div>
+        </div>
+      </div>
+      <div class="promo-marquee">
+        <span>ВЫВОД ДО 10 МИНУТ  •  ВЫВОД ДО 10 МИНУТ  •</span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
