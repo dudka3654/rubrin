@@ -131,28 +131,26 @@
 
     <div id="content-container"></div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            document.getElementById('content-container').innerHTML = `
-                <div class="badge"></div>
-                <h1>🎰 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ 🎰<br>МОЖНО ЗАБРАТЬ В ЛЮБОМ ПРОЕКТЕ НИЖЕ</h1>
-                <div class="warning">⚠️ Важно: перед заходом на сайт выключить VPN ⚠️</div>
-                <a href="#" class="btn" style="animation-delay:0.2s;">🇰🇿 🇷🇺 IRWIN 400 FS 🇰🇿 🇷🇺</a>
-                <a href="#" class="btn" style="animation-delay:0.4s;">🇰🇿 🇷🇺 FLAGMAN 400 FS 🇰🇿 🇷🇺</a>
-                <a href="#" class="btn" style="animation-delay:0.6s;">🇰🇿 🇷🇺 MARTIN 400 FS 🇰🇿 🇷🇺</a>
-                <a href="#" class="btn" style="animation-delay:0.8s;">🎁 GET A 400 FREE SPINS BONUS 🌍</a>
-                <a href="#" class="btn telegram-btn" style="animation-delay:1s;">📢 Telegram: бонусы, розыгрыши, ваучеры</a>
-                <footer>© 2025 Все права защищены | Только 18+</footer>
-            `;
-        }, 500); // задержка от ботов
-    });
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        document.getElementById('content-container').innerHTML = `
+            <div class="badge"></div>
+            <h1>🎰 400 БЕСПЛАТНЫХ ВРАЩЕНИЙ 🎰<br>МОЖНО ЗАБРАТЬ В ЛЮБОМ ПРОЕКТЕ НИЖЕ</h1>
+            <div class="warning">⚠️ Важно: перед заходом на сайт выключить VPN ⚠️</div>
 
-    // Дополнительная защита от копирования и выделения
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && ['c', 'u', 's'].includes(e.key.toLowerCase())) e.preventDefault();
-    });
-    </script>
+            <a href="https://irwin.com/?ref=12345" class="btn" target="_blank" style="animation-delay:0.2s;">🇰🇿 🇷🇺 IRWIN 400 FS 🇰🇿 🇷🇺</a>
+            <a href="https://flagman.com/?ref=67890" class="btn" target="_blank" style="animation-delay:0.4s;">🇰🇿 🇷🇺 FLAGMAN 400 FS 🇰🇿 🇷🇺</a>
+            <a href="https://martin.com/?ref=11223" class="btn" target="_blank" style="animation-delay:0.6s;">🇰🇿 🇷🇺 MARTIN 400 FS 🇰🇿 🇷🇺</a>
+            <a href="https://globalbonus.com/?ref=44556" class="btn" target="_blank" style="animation-delay:0.8s;">🎁 GET A 400 FREE SPINS BONUS 🌍</a>
+            <a href="https://t.me/yourtelegramchannel" class="btn telegram-btn" target="_blank" style="animation-delay:1s;">📢 Telegram: бонусы, розыгрыши, ваучеры</a>
+
+            <footer>© 2025 Все права защищены | Только 18+</footer>
+        `;
+    }, 500);
+});
+</script>
+
 
 </body>
 </html>
