@@ -3,57 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>400 Free Spins</title>
-    <!-- Стили для фона, кнопок и т.д., как на вашем скриншоте -->
+    <title>Забери 400 Free Spins Сейчас!</title>
+    <!-- Улучшенные стили: градиенты, анимации, responsive -->
     <style>
         body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
             text-align: center;
             margin: 0;
             padding: 20px;
+            overflow-x: hidden;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
         h1 {
-            font-size: 24px;
+            font-size: 28px;
             margin: 20px 0;
+            animation: fadeIn 1s ease-in;
         }
         p {
             font-size: 18px;
             margin: 10px 0;
         }
         .button {
-            display: block;
-            margin: 15px auto;
+            display: inline-block;
+            margin: 15px;
             padding: 15px 30px;
             border-radius: 50px;
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
-            width: fit-content;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        .red-gradient {
-            background: linear-gradient(to right, #ff4b2b, #ff416c);
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255,255,255,0.3);
         }
-        .blue-gradient {
-            background: linear-gradient(to right, #007bff, #6f42c1);
-        }
-        .purple-gradient {
-            background: linear-gradient(to right, #6f42c1, #e83e8c);
-        }
-        img.logo {
-            width: 150px;
-            margin: 20px auto;
-        }
+        .red-gradient { background: linear-gradient(90deg, #ff4b2b, #ff416c); }
+        .blue-gradient { background: linear-gradient(90deg, #007bff, #6f42c1); }
+        .purple-gradient { background: linear-gradient(90deg, #6f42c1, #e83e8c); }
+        .testimonial { font-style: italic; margin: 20px; color: #ddd; }
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #222; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.5); z-index: 1000; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 600px) { h1 { font-size: 22px; } .button { width: 90%; margin: 10px auto; } }
     </style>
 </head>
 <body>
-    <div id="content-container" class="container"></div>  <!-- Здесь JS вставит контент -->
-    <script src="script.js"></script>  <!-- Подключаем JS -->
+    <div id="content-container" class="container"></div>
+    <div id="overlay" class="overlay" onclick="closeModal()"></div>
+    <div id="modal" class="modal">
+        <h2>Поздравляем!</h2>
+        <p>Вы открыли эксклюзивный бонус: 400 FS + 100% на депозит!</p>
+        <a href="https://example.com/exclusive-bonus" class="button red-gradient">Забрать сейчас</a>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
