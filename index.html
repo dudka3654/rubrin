@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Анимированные кнопки</title>
   <meta name="robots" content="noindex, nofollow">
+  <link rel="preload" href="links.json?v=1" as="fetch" crossorigin="anonymous">
   <style>
     body {
       background: #111;
@@ -134,14 +135,21 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      if (window.top !== window.self) {
+        window.top.location = window.location.href;
+      }
+
       const isBot = /bot|crawl|spider|crawling/i.test(navigator.userAgent) || !('onscroll' in window);
       if (isBot) {
-        document.body.innerHTML = '<p style="color:white;text-align:center">Loading...</p>';
+        document.body.innerHTML = '<style>body{background:#111;}</style><p style="color:white;text-align:center">Loading...</p>';
         return;
       }
 
-      fetch('links.json')
-        .then(res => res.json())
+      fetch('links.json?v=' + Date.now())
+        .then(res => {
+          if (!res.ok) throw new Error('JSON not found');
+          return res.json();
+        })
         .then(data => {
           const container = document.querySelector('.promo-container');
           data.forEach((item, idx) => {
@@ -164,6 +172,9 @@
             `;
             container.appendChild(block);
           });
+        })
+        .catch(() => {
+          document.querySelector('.promo-container').innerHTML = '<p style="color:white;text-align:center">Бонусы временно недоступны</p>';
         });
     });
   </script>
